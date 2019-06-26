@@ -3,8 +3,7 @@ package com.mojianxiao.system.controller;
 import com.mojianxiao.system.pojo.Admin;
 import com.mojianxiao.system.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,11 +11,8 @@ import java.util.List;
 public class LoginController {
     @Autowired
     private AdminService adminService;
-    @GetMapping(value = "/login",produces = {"application/json;charset=UTF-8"})
-    public void getAllAdmin(){
-        List<Admin> allAdmin = adminService.getAllAdmin();
-        for(Admin admin : allAdmin){
-            System.out.println(admin);
-        }
+    @RequestMapping(value = "/login", produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
+    public String getAllAdmin(Admin admin){
+        return adminService.login(admin);
     }
 }

@@ -17,4 +17,15 @@ public class AdminServiceImpl implements AdminService {
     public List<Admin> getAllAdmin() {
         return adminRepository.findAll();
     }
+
+    @Override
+    public String login(Admin admin) {
+        List<Admin> admins = adminRepository.findAll();
+        for(Admin admin1 : admins){
+            if(admin.getAccount().equals(admin1.getAccount())&&admin.getPassword().equals(admin1.getPassword())){
+                return "true";
+            }
+        }
+        return "false";
+    }
 }
