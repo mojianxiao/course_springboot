@@ -18,6 +18,7 @@ public class LoginServiceImpl implements LoginService {
     private AdminRepository adminRepository;
     @Override
     public Message login(int type,HttpServletRequest request) {
+        Message message = new Message();
         Map<String,String> map = new HashMap<>();
         if(type == 0){
             List<Admin> admins = adminRepository.findAll();
@@ -33,13 +34,13 @@ public class LoginServiceImpl implements LoginService {
             return new Message("10002","密码不能为空");
         }
         for(Map.Entry<String,String> entry : map.entrySet()){
-            if(!account.equals(entry.getKey())){
-            return new Message("10003","请输入正确账号");
-            }
-            if(!password.equals(entry.getValue())){
-                return new Message("1004","请输入正确的密码");
+            if(!(account.equals(entry.getKey())&&password.equals(entry.getValue()))){
+                message.setCode("10003");message.setReason("请输入正确的账号和密码");
+            }else {
+                message.setCode("10000");message.setReason("登录成功");
+                return message;
             }
         }
-        return new Message("10000","登录成功");
+        return message;
     }
 }
