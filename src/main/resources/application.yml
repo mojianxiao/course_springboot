@@ -2,20 +2,22 @@ server:
   port: 8887
 
 
-#数据库配置
 spring:
   datasource:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
-    # JPA配置
+    url: jdbc:mysql://120.79.38.61:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    # JPA
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-    # formatSQL得这样写
+    # formatSQL
     properties:
       hibernate:
         format_sql: true
+
+  thymeleaf:
+             prefix: classpath:/templates/

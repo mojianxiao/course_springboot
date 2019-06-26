@@ -1,18 +1,25 @@
 package com.mojianxiao.system.controller;
 
-import com.mojianxiao.system.pojo.Admin;
-import com.mojianxiao.system.service.AdminService;
+import com.mojianxiao.system.service.LoginService;
+import com.mojianxiao.system.tools.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class LoginController {
     @Autowired
-    private AdminService adminService;
+    private LoginService loginService;
     @RequestMapping(value = "/login", produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
-    public String getAllAdmin(Admin admin){
-        return adminService.login(admin);
+    public Message userLogin(int type, HttpServletRequest request){
+        if(type == 0){
+            return loginService.login(type,request);
+        }
+        return null;
+    }
+    @RequestMapping("/hello")
+    public String hello(){
+        return "login.html";
     }
 }
