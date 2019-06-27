@@ -17,8 +17,4 @@ public class LoginController {
             Message message = loginService.login(request);
             return message;
     }
-    @RequestMapping("/hello")
-    public String hello(){
-        return "login.html";
-    }
 }

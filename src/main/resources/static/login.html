@@ -49,6 +49,9 @@
                         dataType:'Json',
                         success:function(res){
                             alert(res.reason);
+                            if(res.code=1000){
+                                window.location.href ='http://localhost:8887/hello'
+                            }
                         }
                     })
                 }

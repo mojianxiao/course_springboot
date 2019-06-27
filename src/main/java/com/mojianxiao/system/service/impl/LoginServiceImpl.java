@@ -1,7 +1,11 @@
 package com.mojianxiao.system.service.impl;
 
 import com.mojianxiao.system.pojo.Admin;
+import com.mojianxiao.system.pojo.Student;
+import com.mojianxiao.system.pojo.Teacher;
 import com.mojianxiao.system.repository.AdminRepository;
+import com.mojianxiao.system.repository.StudentRepository;
+import com.mojianxiao.system.repository.TeacherRepository;
 import com.mojianxiao.system.service.LoginService;
 import com.mojianxiao.system.tools.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,10 @@ import java.util.Map;
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private AdminRepository adminRepository;
+    @Autowired
+    private StudentRepository studentRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
     @Override
     public Message login(HttpServletRequest request) {
         Message message = new Message();
@@ -25,6 +33,18 @@ public class LoginServiceImpl implements LoginService {
             List<Admin> admins = adminRepository.findAll();
             for(Admin admin :admins){
                 map.put(admin.getAccount(),admin.getPassword());
+            }
+        }
+        if(type == 1){
+            List<Student> students = studentRepository.findAll();
+            for(Student student : students){
+                map.put(student.getStudentAccount(),student.getStudentPassword());
+            }
+        }
+        if(type == 2){
+            List<Teacher> teachers = teacherRepository.findAll();
+            for(Teacher teacher : teachers){
+                map.put(teacher.getTeacherAccount(),teacher.getTeacherPassword());
             }
         }
         String account = request.getParameter("account")!=null?request.getParameter("account"):null;

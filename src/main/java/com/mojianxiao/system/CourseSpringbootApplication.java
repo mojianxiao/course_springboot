@@ -12,12 +12,5 @@ public class CourseSpringbootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CourseSpringbootApplication.class, args);
 	}
-	@RestController
-	@RequestMapping("/user")
-	public class UserController {
-		@GetMapping
-		public String getUsers() {
-			return "Hello Spring Security";
-		}
-	}
+
 }
