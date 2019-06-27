@@ -17,9 +17,10 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private AdminRepository adminRepository;
     @Override
-    public Message login(int type,HttpServletRequest request) {
+    public Message login(HttpServletRequest request) {
         Message message = new Message();
         Map<String,String> map = new HashMap<>();
+        int type = Integer.valueOf(request.getParameter("type"));
         if(type == 0){
             List<Admin> admins = adminRepository.findAll();
             for(Admin admin :admins){

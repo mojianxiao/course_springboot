@@ -8,6 +8,11 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://120.79.38.61:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+
+
+  mvc:
+    static-path-pattern: /**
+      # 默认值为 classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
     # JPA
   jpa:
     hibernate:

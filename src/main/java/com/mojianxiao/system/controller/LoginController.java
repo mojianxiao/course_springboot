@@ -4,6 +4,7 @@ import com.mojianxiao.system.service.LoginService;
 import com.mojianxiao.system.tools.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,11 +13,9 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @RequestMapping(value = "/login", produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
-    public Message userLogin(int type, HttpServletRequest request){
-        if(type == 0){
-            return loginService.login(type,request);
-        }
-        return null;
+    public Message userLogin(HttpServletRequest request){
+            Message message = loginService.login(request);
+            return message;
     }
     @RequestMapping("/hello")
     public String hello(){

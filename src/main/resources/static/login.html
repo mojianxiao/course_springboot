@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+</head>
+<script type="text/css">
+    #btn{
+        padding-left: 20px;
+    }
+</script>
+<body>
+<h2 align="center">大学生选课系统登录界面</h2>
+<!--<form action="/login" method="post">-->
+    <table align="center">
+        <tr>
+            <td>用户名:</td>
+            <td><input type="text" id="account" name="account"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+            <td><select name="type" id="type">
+                <option value="0">管理员</option>
+                <option value="1">学生</option>
+                <option value="2">教师</option>
+            </select>
+            </td>
+            <td colspan="2"><button type="submit" id="btn" onclick="login()" >登录</button></td>
+        </tr>
+        <tr>
+            <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+            <script>
+                function login(){
+                    var user = {
+                        account:$("#account").val(),
+                        password:$("#password").val(),
+                        type:$("#type").val()
+                    };
+                    console.log(user)
+                    $.ajax({
+                        url:'/login',
+                        data:user,
+                        type:'post',
+                        async: false,
+                        dataType:'Json',
+                        success:function(res){
+                            alert(res.reason);
+                        }
+                    })
+                }
+            </script>
+        </tr>
+    </table>
+</body>
+</html>

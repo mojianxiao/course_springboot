@@ -7,5 +7,5 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface LoginService {
-    public Message login(int type,HttpServletRequest request);
+    public Message login(HttpServletRequest request);
 }
