@@ -17,4 +17,9 @@ public class LoginController {
             Message message = loginService.login(request);
             return message;
     }
+    @RequestMapping(value = "/forget", produces = {"application/json;charset=UTF-8"},method = RequestMethod.POST)
+    public Message userForget(HttpServletRequest request) throws Exception{
+        Message message = loginService.forget(request);
+        return message;
+    }
 }

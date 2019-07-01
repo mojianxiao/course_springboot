@@ -15,14 +15,11 @@ import java.util.Objects;
 @Data
 public class Student {
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String studentAccount;
     private String studentPassword;
     private String studentName;
-    private Integer sex;
+    private String sex;
     private Integer age;
     private String date;
     private Integer sort;
-
 }

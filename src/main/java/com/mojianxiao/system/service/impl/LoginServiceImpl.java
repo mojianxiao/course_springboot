@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +62,20 @@ public class LoginServiceImpl implements LoginService {
             }else {
                 message.setCode("10000");message.setReason("登录成功");
                 return message;
+            }
+        }
+        return message;
+    }
+    public Message forget(HttpServletRequest request) throws UnknownHostException {
+        Message message = new Message();
+        String account = request.getParameter("account")!=null?request.getParameter("account"):null;
+        String password = request.getParameter("password");
+        InetAddress addr = InetAddress.getLocalHost();
+        List<Admin> admins = adminRepository.findAll();
+        for(Admin admin : admins) {
+            if (addr.getHostAddress().equals(admin.getIp()) && account.equals(admin.getAccount())) {
+                String newWord = adminRepository.findById(admin.getId()).get().setPassword(password);
+                admin.setPassword();
             }
         }
         return message;

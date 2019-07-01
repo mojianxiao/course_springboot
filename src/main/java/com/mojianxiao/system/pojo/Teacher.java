@@ -14,11 +14,10 @@ import java.util.Objects;
 @Data
 public class Teacher {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private String teacherAccount;
     private String teacherPassword;
     private String teacherName;
     private String teacherSex;
     private String college;
-
+    private int tSubjectId;
 }
