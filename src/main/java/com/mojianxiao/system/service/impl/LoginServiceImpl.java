@@ -74,8 +74,8 @@ public class LoginServiceImpl implements LoginService {
         List<Admin> admins = adminRepository.findAll();
         for(Admin admin : admins) {
             if (addr.getHostAddress().equals(admin.getIp()) && account.equals(admin.getAccount())) {
-                String newWord = adminRepository.findById(admin.getId()).get().setPassword(password);
-                admin.setPassword();
+                String newWord = "s";
+                admin.setPassword(newWord);
             }
         }
         return message;
