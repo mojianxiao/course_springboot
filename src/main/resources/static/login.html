@@ -29,7 +29,9 @@
                 <option value="2">教师</option>
             </select>
             </td>
-            <td colspan="2"><button type="submit" id="btn" onclick="login()" >登录</button></td>
+                <td colspan="3"><button type="submit" id="btn" onclick="login()" >登录</button>
+                <button type="submit" id="btn1" onclick="forget">忘记密码</button>
+            </td>
         </tr>
         <tr>
             <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
@@ -48,10 +50,15 @@
                         async: false,
                         dataType:'Json',
                         success:function(res){
-                            alert(res.reason);
-                            if(res.code=1000){
                                 window.location.href ='http://localhost:8887/hello'
-                            }
+                        }
+                    })
+                }
+                function forget() {
+                    $.ajax({
+                        url:'/login',
+                        success:function(){
+                            window.location.href ='http://localhost:8887/hello'
                         }
                     })
                 }
