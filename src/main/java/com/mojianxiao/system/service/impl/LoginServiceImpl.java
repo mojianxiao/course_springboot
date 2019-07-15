@@ -76,7 +76,7 @@ public class LoginServiceImpl implements LoginService {
         Message message = new Message();
         String account = request.getParameter("account")!=null?request.getParameter("account"):null;
         String password = request.getParameter("password");
-        String secondPAssword = request.getParameter("secondPAssword");
+        String secondPAssword = request.getParameter("secondPassword");
         InetAddress addr = InetAddress.getLocalHost();
         List<Admin> admins = adminRepository.findAll();
         for(Admin admin : admins) {
@@ -94,6 +94,4 @@ public class LoginServiceImpl implements LoginService {
     public void beforeLogin(){
 
     }
-    @Pointcut()
-    public void pointcut(){}
 }

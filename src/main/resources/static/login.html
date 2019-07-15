@@ -30,7 +30,7 @@
             </select>
             </td>
                 <td colspan="3"><button type="submit" id="btn" onclick="login()" >登录</button>
-                <button type="submit" id="btn1" onclick="forget">忘记密码</button>
+                <button type="submit" id="btn1" onclick="forget()" >忘记密码</button>
             </td>
         </tr>
         <tr>
@@ -42,7 +42,6 @@
                         password:$("#password").val(),
                         type:$("#type").val()
                     };
-                    console.log(user)
                     $.ajax({
                         url:'/login',
                         data:user,
@@ -54,13 +53,8 @@
                         }
                     })
                 }
-                function forget() {
-                    $.ajax({
-                        url:'/login',
-                        success:function(){
-                            window.location.href ='http://localhost:8887/hello'
-                        }
-                    })
+                function forget(){
+                    window.location.href ='http://localhost:8887/forget.html'
                 }
             </script>
         </tr>

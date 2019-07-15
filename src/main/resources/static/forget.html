@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>忘记密码</title>
+</head>
+<body>
+<h2 align="center">大学生选课系统忘记密码</h2>
+<!--<form action="/login" method="post">-->
+<table align="center">
+    <tr>
+        <td>用户名:</td>
+        <td><input type="text" id="account" name="account"></td>
+    </tr>
+        <td>密码:</td>
+        <td><input type="password" id="password" name="password"></td>
+        <td>请再次输入密码</td>
+        <td><input type="password" id="secondPassword" name="password"></td>
+    <td colspan="3"><button type="submit" id="btn" onclick="complete()" >确定</button>
+        <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            function complete() {
+                var user = {
+                    account:$("#account").val(),
+                    password:$("#password").val(),
+                    secondPassword:$("#secondPassword").val()
+                };
+                $.ajax({
+                    url:'/forget',
+                    data:user,
+                    type:'post',
+                    async: true,
+                    dataType:'Json',
+                    success:function(res){
+                        alert(res.reason)
+                    }
+                })
+            }
+            </script>
+</body>
+</html>
