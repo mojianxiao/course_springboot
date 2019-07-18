@@ -10,8 +10,6 @@ import com.mojianxiao.system.service.LoginService;
 import com.mojianxiao.system.tools.Message;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.hibernate.validator.internal.util.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +19,6 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 @Aspect
 @Service
@@ -73,7 +70,6 @@ public class LoginServiceImpl implements LoginService {
         return message;
     }
     public Message forget(HttpServletRequest request) throws UnknownHostException {
-        Message message = new Message();
         String account = request.getParameter("account")!=null?request.getParameter("account"):null;
         String password = request.getParameter("password");
         String secondPAssword = request.getParameter("secondPassword");
@@ -88,7 +84,7 @@ public class LoginServiceImpl implements LoginService {
                 return new Message("-1","输入的密码不一致!");
             }
         }
-        return new Message("-1","修改密码失败!");
+        return new Message("-1","你的ip地址不属于管理员ip!");
     }
     @Before(value = "execution(* com.mojianxiao.system.controller.LoginController.userLogin(..))")
     public void beforeLogin(){
